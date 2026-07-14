@@ -23,16 +23,32 @@ Built for lawyers and regulatory professionals who want the statute inside the t
 
 ## Quick start
 
-### Hosted (easiest — nothing to install)
+The server is hosted at **`https://mcp.0xjb.dev/mcp`** — nothing to install. Connect from any MCP client:
 
-The server runs at **`https://mcp.0xjb.dev/mcp`**. Point any HTTP-capable MCP client at it:
+### Claude Desktop
+
+1. Open **Settings → Connectors** (under your profile menu).
+2. Click **Add custom connector**.
+3. Name it (e.g. `Gibraltar Prediction Markets`) and paste the URL: `https://mcp.0xjb.dev/mcp`
+4. Leave the OAuth **Client ID blank** — no sign-in is required — and click **Add**.
+5. In a new chat, open the tools menu (sliders icon) and check the connector is enabled, then ask away.
+
+### ChatGPT
+
+1. Enable developer mode: **Settings → Apps & Connectors → Advanced settings** → toggle **Developer mode** (requires a paid plan).
+2. Go to **Settings → Apps & Connectors → Create** (custom connector).
+3. Name it, set **MCP server URL** to `https://mcp.0xjb.dev/mcp`, authentication: **None**.
+4. Save, then enable the connector in a chat via the **+ / tools** menu. ChatGPT retrieves through the server's `search` and `fetch` tools.
+
+### Claude Code (CLI)
 
 ```bash
-# Claude Code CLI
 claude mcp add --transport http gibraltar-pm https://mcp.0xjb.dev/mcp
 ```
 
-For Claude Desktop, Cursor, or ChatGPT, add a remote/HTTP connector with the same URL. Works for anyone — no Node, no terminal required.
+### Cursor / other MCP clients
+
+Add a remote (streamable HTTP) MCP server with URL `https://mcp.0xjb.dev/mcp` — see [docs/cursor.md](docs/cursor.md).
 
 ### Local via npm (stdio)
 
