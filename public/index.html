@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gibraltar Prediction Markets — MCP Server</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 680px; margin: 6vh auto; padding: 0 1.25rem; }
+  h1 { font-size: 1.5rem; margin-bottom: .25rem; }
+  .sub { color: #888; margin-top: 0; }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  pre { background: rgba(127,127,127,.12); padding: .9rem 1rem; border-radius: 8px; overflow-x: auto; font-size: .9rem; }
+  .note { border-left: 3px solid #c9a227; padding: .5rem .9rem; background: rgba(201,162,39,.08); border-radius: 4px; font-size: .93rem; }
+  a { color: inherit; }
+  footer { margin-top: 2.5rem; font-size: .85rem; color: #888; }
+</style>
+</head>
+<body>
+  <h1>Gibraltar Prediction Markets — MCP Server</h1>
+  <p class="sub">Query the Prediction Market Regulations 2026 (LN.2026/176) from any MCP client.</p>
+
+  <p class="note">⚖️ <strong>Not legal advice.</strong> This service reproduces Gibraltar legislation for research and reference only — it is not legal advice and not an official version of the law. Always verify against the <a href="https://www.gibraltarlaws.gov.gi/uploads/legislations/gambling/2026s176/2026s176.pdf">official text</a> and consult qualified Gibraltar counsel.</p>
+
+  <h2>Connect</h2>
+  <p>Claude Code:</p>
+  <pre>claude mcp add --transport http gibraltar-pm https://mcp.0xjb.dev/mcp</pre>
+  <p>Any MCP client (Claude Desktop, Cursor, ChatGPT): point an HTTP / streamable-HTTP connector at <code>https://mcp.0xjb.dev/mcp</code>.</p>
+
+  <p>Prefer a local install? <code>npx -y gibraltar-prediction-markets-mcp</code> (stdio) — see the <a href="https://github.com/0xJB-dev/gibraltar-prediction-markets-mcp">repository</a>.</p>
+
+  <footer>
+    Source: Prediction Market Regulations 2026 (LN.2026/176), subsidiary legislation under the Gambling Act 2025. © Government of Gibraltar.<br />
+    Built by <a href="https://0xjb.dev">0xJB</a>.
+  </footer>
+</body>
+</html>

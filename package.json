@@ -1,0 +1,59 @@
+{
+  "name": "gibraltar-prediction-markets-mcp",
+  "version": "1.0.2",
+  "description": "MCP server exposing the Gibraltar Prediction Market Regulations 2026 (LN.2026/176) for legal research in Claude Desktop, Claude Code, ChatGPT, Cursor and any MCP client.",
+  "license": "MIT",
+  "author": "0xJB (https://0xjb.dev)",
+  "homepage": "https://0xjb.dev",
+  "type": "module",
+  "bin": {
+    "gibraltar-prediction-markets-mcp": "dist/index.js",
+    "gibraltar-prediction-markets-mcp-http": "dist/http.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "data",
+    "docs",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/gen-data.mjs && tsc",
+    "start": "node dist/index.js",
+    "start:http": "node dist/http.js",
+    "test": "node --test test/*.test.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xJB-dev/gibraltar-prediction-markets-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0xJB-dev/gibraltar-prediction-markets-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "gibraltar",
+    "prediction-markets",
+    "legal",
+    "regulation",
+    "gambling-act-2025",
+    "legaltech"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "express": "^5.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@vercel/node": "^5.0.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

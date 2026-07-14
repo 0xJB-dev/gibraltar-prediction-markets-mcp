@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "gibraltar-prediction-markets": {
+      "command": "node",
+      "args": [
+        "/Users/jawaadbokhari/Documents/Companies/Personal/Prediction Markets MPC/dist/index.js"
+      ]
+    }
+  }
+}

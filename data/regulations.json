@@ -1,0 +1,402 @@
+{
+  "meta": {
+    "shortTitle": "Prediction Market Regulations 2026",
+    "citation": "LN.2026/176",
+    "subsidiaryTo": "Gambling Act 2025",
+    "enablingPowers": "Made by the Minister under sections 34 and 159 of the Gambling Act 2025 and all other enabling powers.",
+    "classification": "2026-04 (Gambling)",
+    "commencement": "13 July 2026 (comes into operation on the day of publication)",
+    "publisher": "Government of Gibraltar",
+    "sourceUrl": "https://www.gibraltarlaws.gov.gi",
+    "officialTextUrl": "https://www.gibraltarlaws.gov.gi/uploads/legislations/gambling/2026s176/2026s176.pdf",
+    "sourceDocument": "2026s176.pdf",
+    "pages": 24,
+    "copyright": "© Government of Gibraltar (www.gibraltarlaws.gov.gi)",
+    "disclaimer": "This data reproduces the text of Gibraltar subsidiary legislation for research and reference. It is not legal advice and is not an official version of the law. Always verify against the official version published at www.gibraltarlaws.gov.gi. For advice, consult qualified Gibraltar counsel.",
+    "lastStructured": "2026-07-14"
+  },
+  "parts": [
+    { "number": 1, "title": "PRELIMINARY", "regulations": [1, 2, 3, 4] },
+    { "number": 2, "title": "PREDICTION MARKET AUTHORISATION", "regulations": [5, 6, 7, 8, 9, 10] },
+    { "number": 3, "title": "PERMITTED ACTIVITY AND CONTRACT REQUIREMENTS", "regulations": [11, 12, 13, 14] },
+    { "number": 4, "title": "ONGOING REQUIREMENTS", "regulations": [15, 16, 17, 18, 19, 20, 21, 22, 23] },
+    { "number": 5, "title": "SUPERVISION AND ENFORCEMENT", "regulations": [24, 25, 26, 27, 28, 29, 30, 31] },
+    { "number": 6, "title": "APPEALS", "regulations": [32] },
+    { "number": 7, "title": "FINAL PROVISIONS", "regulations": [33, 34] }
+  ],
+  "definitions": [
+    { "term": "the Act", "definition": "means the Gambling Act 2025;" },
+    { "term": "applicant", "definition": "means a person who applies for a prediction market authorisation under regulation 7;" },
+    { "term": "authorised operator", "definition": "means a person who holds a prediction market authorisation and is entered on the register;" },
+    { "term": "Authority", "definition": "means the licensing authority under the Act;" },
+    { "term": "Commissioner", "definition": "means the Commissioner under the Act;" },
+    { "term": "contract rules", "definition": "means the rules, terms and procedures governing the creation, listing, trading, suspension, cancellation, voiding, settlement or delisting of a prediction market contract;" },
+    { "term": "participant", "definition": "means a person who enters into, trades or holds a prediction market contract through an authorised operator;" },
+    { "term": "prediction market", "definition": "means a system, platform or arrangement which facilitates the making, trading or settlement of prediction market contracts;" },
+    { "term": "prediction market activity", "definition": "means the operation of a prediction market;" },
+    { "term": "prediction market authorisation", "definition": "means an authorisation granted under regulation 8;" },
+    { "term": "prediction market contract", "definition": "means a contract, arrangement or instrument the value, return, payment or settlement of which is determined by reference to— (a) the occurrence or non-occurrence of an event; or (b) the value of, or any change in the value of, an index, measure, statistic, result or outcome derived from or connected with such event;" },
+    { "term": "register", "definition": "means the register maintained under regulation 10;" },
+    { "term": "regulatory objectives", "definition": "means the regulatory objectives of the Act;" },
+    { "term": "settlement source", "definition": "means a source of data, information or determination used to establish the occurrence, non-occurrence, value or outcome by reference to which a prediction market contract is settled." }
+  ],
+  "regulations": [
+    {
+      "id": "reg-1",
+      "number": 1,
+      "part": 1,
+      "partTitle": "PRELIMINARY",
+      "title": "Title",
+      "keywords": ["citation", "short title"],
+      "text": "1. These Regulations may be cited as the Prediction Market Regulations 2026."
+    },
+    {
+      "id": "reg-2",
+      "number": 2,
+      "part": 1,
+      "partTitle": "PRELIMINARY",
+      "title": "Commencement",
+      "keywords": ["commencement", "operation", "publication"],
+      "text": "2. These Regulations come into operation on the day of publication."
+    },
+    {
+      "id": "reg-3",
+      "number": 3,
+      "part": 1,
+      "partTitle": "PRELIMINARY",
+      "title": "Interpretation",
+      "keywords": ["interpretation", "definitions", "meaning", "operating a prediction market", "authorisation vs licence"],
+      "text": "3.(1) In these Regulations, unless the context otherwise requires–\n\n\"the Act\" means the Gambling Act 2025;\n\n\"applicant\" means a person who applies for a prediction market authorisation under regulation 7;\n\n\"authorised operator\" means a person who holds a prediction market authorisation and is entered on the register;\n\n\"Authority\" means the licensing authority under the Act;\n\n\"Commissioner\" means the Commissioner under the Act;\n\n\"contract rules\" means the rules, terms and procedures governing the creation, listing, trading, suspension, cancellation, voiding, settlement or delisting of a prediction market contract;\n\n\"participant\" means a person who enters into, trades or holds a prediction market contract through an authorised operator;\n\n\"prediction market\" means a system, platform or arrangement which facilitates the making, trading or settlement of prediction market contracts;\n\n\"prediction market activity\" means the operation of a prediction market;\n\n\"prediction market authorisation\" means an authorisation granted under regulation 8;\n\n\"prediction market contract\" means a contract, arrangement or instrument the value, return, payment or settlement of which is determined by reference to–\n(a) the occurrence or non-occurrence of an event; or\n(b) the value of, or any change in the value of, an index, measure, statistic, result or outcome derived from or connected with such event;\n\n\"register\" means the register maintained under regulation 10;\n\n\"regulatory objectives\" means the regulatory objectives of the Act;\n\n\"settlement source\" means a source of data, information or determination used to establish the occurrence, non-occurrence, value or outcome by reference to which a prediction market contract is settled.\n\n(2) A reference in these Regulations to operating a prediction market includes providing, maintaining, administering or making available a prediction market, whether directly or through another person.\n\n(3) A reference in these Regulations to an authorisation is a reference to a prediction market authorisation and is not a reference to a licence under Part 4 of the Act."
+    },
+    {
+      "id": "reg-4",
+      "number": 4,
+      "part": 1,
+      "partTitle": "PRELIMINARY",
+      "title": "Application and status of prediction market activity",
+      "keywords": ["application", "status", "in or from Gibraltar", "not betting gaming or lottery", "distinct activity"],
+      "text": "4.(1) These Regulations apply to a person who carries on, or proposes to carry on, prediction market activity in or from Gibraltar.\n\n(2) Prediction market activity carried on in accordance with these Regulations constitutes a distinct activity for the purposes of the Act.\n\n(3) Prediction market activity carried on in accordance with these Regulations is not to be treated as betting, gaming or a lottery for the purposes of the Act solely by reason of its characteristics as prediction market activity."
+    },
+    {
+      "id": "reg-5",
+      "number": 5,
+      "part": 2,
+      "partTitle": "PREDICTION MARKET AUTHORISATION",
+      "title": "Exemption from the general prohibition",
+      "keywords": ["exemption", "general prohibition", "section 26", "cessation of exemption"],
+      "text": "5.(1) A person who holds a prediction market authorisation and is entered on the register is exempt from the general prohibition in section 26 of the Act.\n\n(2) The exemption in sub-regulation (1) applies only while the person complies with these Regulations.\n\n(3) The exemption is subject to any condition, restriction or requirement imposed by or under these Regulations.\n\n(4) The Authority or the Commissioner may direct that the exemption is to cease to apply to an authorised operator, to the extent specified in the direction, where the Authority or the Commissioner considers that the operator has ceased to comply materially with these Regulations or a direction given under them or a condition, restriction or requirement of its authorisation.\n\n(5) Sub-regulation (4) applies without limiting any other power of the Authority or the Commissioner to–\n(a) vary, suspend or revoke an authorisation;\n(b) impose a condition, restriction or requirement or give a direction; or\n(c) take enforcement action in accordance with these Regulations."
+    },
+    {
+      "id": "reg-6",
+      "number": 6,
+      "part": 2,
+      "partTitle": "PREDICTION MARKET AUTHORISATION",
+      "title": "Requirement for authorisation",
+      "keywords": ["requirement", "must not operate", "authorised operator", "not a licence", "exclusions", "Part 4 licence holder"],
+      "text": "6.(1) Subject to sub-regulation (6), a person must not operate a prediction market in or from Gibraltar unless the person is an authorised operator.\n\n(2) A person who operates a prediction market without complying with sub-regulation (1) is not entitled to rely on the exemption in regulation 5.\n\n(3) A prediction market authorisation is not a licence under Part 4 of the Act.\n\n(4) Except to the extent expressly applied by these Regulations, a provision of the Act relating to licences or licence holders does not apply to an authorised operator solely by reason of the grant of a prediction market authorisation.\n\n(5) A prediction market authorisation only authorises the holder to carry on prediction market activity in accordance with these Regulations and does not authorise the holder to carry on any regulated activity under the Act.\n\n(6) Sub-regulation (1) does not apply to–\n(a) a person who holds a licence under Part 4 of the Act to carry on regulated activities which include prediction market activity; or\n(b) a person to whom regulation 33(2) applies."
+    },
+    {
+      "id": "reg-7",
+      "number": 7,
+      "part": 2,
+      "partTitle": "PREDICTION MARKET AUTHORISATION",
+      "title": "Application for authorisation",
+      "keywords": ["application", "form and manner", "Schedule 1", "six months", "refuse to determine"],
+      "text": "7.(1) An application for a prediction market authorisation must be made to the Authority in such form and manner as the Authority may determine.\n\n(2) An application must be accompanied by–\n(a) the information specified in Schedule 1; and\n(b) such other information as the Authority may reasonably require.\n\n(3) The Authority may refuse to determine an application where the applicant has failed to provide all of the information required under this regulation.\n\n(4) The Authority must determine an application within six months of receiving a complete application, or such longer period as it may notify to the applicant where the Authority considers that, due to exceptional circumstances, additional time is required."
+    },
+    {
+      "id": "reg-8",
+      "number": 8,
+      "part": 2,
+      "partTitle": "PREDICTION MARKET AUTHORISATION",
+      "title": "Grant or refusal of authorisation",
+      "keywords": ["grant", "refusal", "Schedule 2", "fit and proper", "regulatory objectives", "conditions"],
+      "text": "8.(1) The Authority may grant a prediction market authorisation if it is satisfied that the applicant meets the conditions specified in Schedule 2.\n\n(2) In determining an application, the Authority must have regard to the regulatory objectives and, in particular, to the need to protect participants, prevent financial crime, preserve market integrity and protect the reputation of Gibraltar.\n\n(3) The Authority may refuse an application where it is not satisfied that the applicant is fit and proper, capable of effective supervision, or able to comply with these Regulations.\n\n(4) An authorisation may be granted subject to such conditions as the Authority considers appropriate."
+    },
+    {
+      "id": "reg-9",
+      "number": 9,
+      "part": 2,
+      "partTitle": "PREDICTION MARKET AUTHORISATION",
+      "title": "Conditions of authorisation",
+      "keywords": ["conditions", "comply", "impose vary remove", "governance", "systems and controls"],
+      "text": "9.(1) An authorised operator must comply with every condition imposed on its authorisation.\n\n(2) The Authority may impose, vary or remove a condition at any time.\n\n(3) Conditions may include conditions relating to governance, systems and controls, participant eligibility, financial resources, contract approval, disclosure, market surveillance, safeguarding, outsourcing, reporting and wind-down."
+    },
+    {
+      "id": "reg-10",
+      "number": 10,
+      "part": 2,
+      "partTitle": "PREDICTION MARKET AUTHORISATION",
+      "title": "Register of authorised operators",
+      "keywords": ["register", "maintain", "condition of exemption", "publication"],
+      "text": "10.(1) The Authority must establish and maintain a register of authorised operators.\n\n(2) Entry on the register is a condition of the exemption in regulation 5.\n\n(3) The register may contain such information, and be published in such manner, as the Authority considers appropriate."
+    },
+    {
+      "id": "reg-11",
+      "number": 11,
+      "part": 3,
+      "partTitle": "PERMITTED ACTIVITY AND CONTRACT REQUIREMENTS",
+      "title": "Scope of permitted activity",
+      "keywords": ["scope", "permitted activity", "creation listing settlement", "platform", "pricing matching clearing", "ancillary activities", "outside scope"],
+      "text": "11.(1) An authorised operator may, subject to these Regulations and the conditions of its authorisation, do one or more of the following–\n(a) facilitate the creation, listing and settlement of prediction market contracts;\n(b) provide a platform through which participants may enter into, trade or hold prediction market contracts;\n(c) operate systems for pricing, matching, clearing, settlement, reporting and market surveillance; or\n(d) undertake ancillary activities approved by the Authority.\n\n(2) An authorised operator must not carry on any activity outside the scope of its authorisation."
+    },
+    {
+      "id": "reg-12",
+      "number": 12,
+      "part": 3,
+      "partTitle": "PERMITTED ACTIVITY AND CONTRACT REQUIREMENTS",
+      "title": "Approval of prediction market contracts",
+      "keywords": ["approval", "contracts", "certified", "objective settlement", "manipulation", "class not individual transactions", "suspend amend void withdraw delist"],
+      "text": "12.(1) An authorised operator must not list or make available a prediction market contract unless the contract has been–\n(a) approved by the Authority; or\n(b) certified in accordance with arrangements approved by the Authority.\n\n(2) An authorised operator must not list or make available a prediction market contract unless it is reasonably satisfied that the contract is clear, capable of objective settlement, not readily susceptible to manipulation and consistent with the regulatory objectives.\n\n(3) The Authority may require an authorised operator to suspend, amend, void, withdraw or delist a prediction market contract.\n\n(4) For the avoidance of doubt, approval under this regulation applies to the class of prediction market contract offered by the operator and not to individual transactions entered into by participants."
+    },
+    {
+      "id": "reg-13",
+      "number": 13,
+      "part": 3,
+      "partTitle": "PERMITTED ACTIVITY AND CONTRACT REQUIREMENTS",
+      "title": "Contract rules and settlement arrangements",
+      "keywords": ["contract rules", "settlement arrangements", "eligibility", "trading matching order handling", "error trades", "settlement sources", "disputes", "records reporting audit trails", "reliable transparent verifiable"],
+      "text": "13.(1) An authorised operator must maintain contract rules approved by the Authority.\n\n(2) Contract rules must make provision for–\n(a) the specification of each prediction market contract;\n(b) participant eligibility;\n(c) trading, matching and order handling;\n(d) suspension, cancellation, voiding and delisting;\n(e) error trades and market disruption;\n(f) objective settlement sources;\n(g) procedures for disputes relating to settlement; and\n(h) records, reporting and audit trails, including the reporting of transactions to the Authority.\n\n(3) A settlement source must be reliable, transparent, verifiable and, so far as reasonably practicable, resistant to manipulation."
+    },
+    {
+      "id": "reg-14",
+      "number": 14,
+      "part": 3,
+      "partTitle": "PERMITTED ACTIVITY AND CONTRACT REQUIREMENTS",
+      "title": "Prohibited or restricted contracts",
+      "keywords": ["prohibited", "restricted", "direction", "public interest", "criminal conduct", "death serious injury terrorism", "war armed conflict", "not capable of objective settlement", "reputational risk"],
+      "text": "14.(1) The Authority may by direction prohibit or restrict the listing or making available of a class of prediction market contract where it considers that the contract would be contrary to the regulatory objectives or to the public interest.\n\n(2) Without limiting sub-regulation (1), in deciding whether to issue a direction, the Authority may have regard to whether a contract relates to–\n(a) criminal conduct;\n(b) death, serious injury or terrorism;\n(c) the occurrence of war or armed conflict;\n(d) an event or outcome which is not capable of objective settlement; or\n(e) any matter which may give rise to–\n(i) significant manipulation, disorderly trading or consumer harm; or\n(ii) reputational risk to Gibraltar."
+    },
+    {
+      "id": "reg-15",
+      "number": 15,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Market integrity",
+      "keywords": ["market integrity", "fair and orderly trading", "market manipulation", "insider dealing", "wash trading", "self-trading", "position limits", "trading controls"],
+      "text": "15.(1) An authorised operator must establish and maintain effective arrangements to ensure fair and orderly trading.\n\n(2) The arrangements must include systems and controls designed to prevent, detect and address–\n(a) market manipulation, insider dealing or misuse of confidential information;\n(b) wash trading, self-trading or fictitious transactions;\n(c) abusive concentration of positions; or\n(d) collusive or disorderly trading.\n\n(3) The Authority may require an authorised operator to impose position limits or other trading controls."
+    },
+    {
+      "id": "reg-16",
+      "number": 16,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Systems, controls and governance",
+      "keywords": ["systems", "controls", "governance", "risk management", "senior management responsibility", "records"],
+      "text": "16.(1) An authorised operator must maintain effective governance arrangements, internal controls and risk management systems.\n\n(2) An operator must ensure that its senior management is responsible for compliance with these Regulations and its conditions of authorisation.\n\n(3) An operator must maintain adequate records to demonstrate compliance with these Regulations."
+    },
+    {
+      "id": "reg-17",
+      "number": 17,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Conflicts of interest",
+      "keywords": ["conflicts of interest", "identify manage disclose", "trading by operator", "market making", "liquidity provision", "settlement sources", "commercial incentives"],
+      "text": "17.(1) An authorised operator must establish and maintain effective arrangements to identify, manage and disclose conflicts of interest.\n\n(2) Those arrangements must include controls in relation to–\n(a) trading by the operator, its group, officers, employees or connected persons;\n(b) market making;\n(c) liquidity provision;\n(d) settlement sources;\n(e) contract approval;\n(f) commercial incentives; and\n(g) any other matter which may conflict with participant interests or market integrity."
+    },
+    {
+      "id": "reg-18",
+      "number": 18,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Participant protection and disclosure",
+      "keywords": ["participant protection", "disclosure", "clear fair not misleading", "risks", "fees and charges", "appropriateness assessment", "warning", "exposure limits", "cooling-off"],
+      "text": "18.(1) An authorised operator must provide participants with information which is clear, fair and not misleading.\n\n(2) The information provided must include–\n(a) the nature and operation of prediction market contracts and the risks involved;\n(b) fees and charges;\n(c) financial exposure;\n(d) settlement mechanisms and settlement sources;\n(e) suspension, cancellation and delisting powers; and\n(f) complaints and dispute resolution arrangements.\n\n(3) An authorised operator must assess whether participation in prediction market contracts is appropriate for a participant, having regard to the participant's knowledge, experience and understanding of the risks involved.\n\n(4) Where an authorised operator determines that participation is not appropriate for a participant, it must provide the participant with a clear written warning and may refuse to permit the participant to enter into a prediction market contract.\n\n(5) The Authority may by direction require authorised operators to impose maximum exposure limits, cooling-off periods or other measures to protect participants from excessive financial loss."
+    },
+    {
+      "id": "reg-19",
+      "number": 19,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Client money and safeguarding",
+      "keywords": ["client money", "safeguarding", "segregation", "reconciliation", "custody", "participant balances", "own account", "insolvency"],
+      "text": "19.(1) An authorised operator must safeguard money, assets or other value received from or held on behalf of participants.\n\n(2) An operator must maintain arrangements for segregation, reconciliation, custody, settlement and protection of participant balances.\n\n(3) An operator must not use participant money or assets for its own account except to the extent expressly permitted by the Authority.\n\n(4) The Authority may impose requirements on authorised operators in relation to safeguarding, permitted investments, reconciliations, default arrangements and treatment on insolvency."
+    },
+    {
+      "id": "reg-20",
+      "number": 20,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Financial resources and wind-down",
+      "keywords": ["financial resources", "wind-down", "recovery plan", "adequate resources", "orderly settlement", "transfer or closure"],
+      "text": "20.(1) An authorised operator must maintain adequate financial and non-financial resources having regard to the nature, scale and complexity of its business.\n\n(2) An operator must maintain a recovery and wind-down plan approved by the Authority.\n\n(3) The wind-down plan must include arrangements for orderly settlement, transfer or closure of contracts and for the return or protection of participant money and assets."
+    },
+    {
+      "id": "reg-21",
+      "number": 21,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Anti-money laundering and sanctions controls",
+      "keywords": ["AML", "anti-money laundering", "sanctions", "terrorist financing", "proliferation financing", "Proceeds of Crime Act 2015", "Sanctions Act 2019", "financial crime"],
+      "text": "21.(1) An authorised operator must maintain effective systems and controls to prevent and detect money laundering, terrorist financing, proliferation financing and breaches of financial sanctions.\n\n(2) An authorised operator must comply with the Proceeds of Crime Act 2015, the Sanctions Act 2019 and any other applicable enactment relating to financial crime.\n\n(3) Nothing in these Regulations limits any obligation imposed on an authorised operator under any enactment relating to anti-money laundering, countering the financing of terrorism or proliferation or sanctions."
+    },
+    {
+      "id": "reg-22",
+      "number": 22,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Use of digital asset payments",
+      "keywords": ["digital asset payments", "stablecoins", "funding accounts", "collateral", "settlement", "withdrawal", "legal character", "crypto"],
+      "text": "22.(1) Nothing in these Regulations is to be taken to prevent the use by an authorised operator of digital asset payments, including stablecoins, for the funding of participants' accounts, the provision of collateral, the settlement of transactions or for the making of payments to, or the withdrawal of funds by, participants.\n\n(2) The use of a digital asset payment does not, of itself, affect the legal character of a prediction market contract or cause the operator or any participant to be treated as carrying on a regulated activity other than prediction market activity solely by reason of the use of that payment."
+    },
+    {
+      "id": "reg-23",
+      "number": 23,
+      "part": 4,
+      "partTitle": "ONGOING REQUIREMENTS",
+      "title": "Substantive presence and outsourcing",
+      "keywords": ["substantive presence", "outsourcing", "material function", "effective supervision", "remains responsible"],
+      "text": "23.(1) An authorised operator must maintain such substantive presence in Gibraltar as the Authority considers necessary for effective supervision.\n\n(2) An authorised operator must not outsource a material function unless it has satisfied the Authority that the outsourcing will not impair effective supervision, market integrity, participant protection or compliance with these Regulations.\n\n(3) An authorised operator remains responsible for compliance with these Regulations despite any outsourcing arrangement."
+    },
+    {
+      "id": "reg-24",
+      "number": 24,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Functions of the Authority and the Commissioner",
+      "keywords": ["functions", "Authority", "Commissioner", "determine applications", "supervise", "monitor compliance", "enforcement", "financial crime"],
+      "text": "24.(1) The functions of the Authority under these Regulations are–\n(a) to consider and determine applications for prediction market authorisation; and\n(b) to discharge the other functions conferred on it by or under the Regulations.\n\n(2) The functions of the Commissioner under these Regulations are–\n(a) to advise and assist the Authority in relation to the discharge by that authority of its functions under the Regulations;\n(b) to supervise and regulate authorised operators;\n(c) to monitor compliance by authorised operators with the Regulations and the terms of their authorisation and take appropriate enforcement action in respect of any non-compliance;\n(d) to monitor compliance by authorised operators with applicable laws relating to the prevention of financial crime and take appropriate action in respect of any non-compliance; and\n(e) to perform the other functions conferred on it by or under these Regulations.\n\n(3) In discharging their functions under these Regulations, the Authority and the Commissioner must, so far as reasonably possible, act in a way which–\n(a) is compatible with the regulatory objectives; and\n(b) they consider most appropriate for the purposes of meeting those objectives."
+    },
+    {
+      "id": "reg-25",
+      "number": 25,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Power to require information",
+      "keywords": ["power to require information", "documents", "explanations", "assistance", "applicant", "authorised operator", "connected person"],
+      "text": "25.(1) The Authority or the Commissioner may require the following persons to provide it with any information, documents, explanations or assistance it reasonably requires for the purposes of these Regulations–\n(a) an applicant;\n(b) an authorised operator; or\n(c) a connected person.\n\n(2) A requirement under sub-regulation (1) must be complied with in such form and manner and within such period as the Authority or the Commissioner may specify."
+    },
+    {
+      "id": "reg-26",
+      "number": 26,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Directions",
+      "keywords": ["directions", "necessary or expedient", "take or refrain from action", "representations", "urgent action"],
+      "text": "26.(1) The Authority or the Commissioner may give a direction to an authorised operator where the Authority or the Commissioner (as the case may be) considers that doing so is necessary or expedient for the purposes of these Regulations or the regulatory objectives.\n\n(2) A direction may require the operator to take, or refrain from taking, specified action.\n\n(3) Before giving a direction under sub-regulation (1), the Authority or the Commissioner must give the operator a reasonable opportunity to make representations\n\n(4) Sub-regulation (3) does not apply where the Authority or the Commissioner is satisfied that urgent action is necessary and, in that event, a direction may take effect immediately."
+    },
+    {
+      "id": "reg-27",
+      "number": 27,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Variation, suspension and revocation of authorisation",
+      "keywords": ["variation", "suspension", "revocation", "no longer fit and proper", "false or misleading information", "contravened", "protect participants"],
+      "text": "27.(1) The Authority may vary, suspend or revoke a prediction market authorisation where it considers that–\n(a) the authorised operator–\n(i) no longer satisfies the conditions of authorisation or is not fit and proper;\n(ii) has provided false or misleading information; or\n(iii) has contravened the Act, these Regulations or a condition of its authorisation; or\n(b) doing so is necessary to protect participants, market integrity, the public interest or the reputation of Gibraltar.\n\n(2) A suspension may be imposed for such period and subject to such conditions as the Authority considers appropriate."
+    },
+    {
+      "id": "reg-28",
+      "number": 28,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Modified application of the Act",
+      "keywords": ["modified application", "Schedule 3", "applied provisions", "not a licence holder"],
+      "text": "28.(1) The provisions of the Act specified in Schedule 3 (the \"applied provisions\") apply to authorised operators with the modifications specified in that Schedule.\n\n(2) The application of an applied provision in accordance with this regulation does not make an authorised operator a licence holder under Part 4 of the Act.\n\n(3) A reference in an applied provision to a licence, licence holder or licensed activity has effect only to the extent, and with the modifications, specified in Schedule 3 or as otherwise expressly provided in these Regulations."
+    },
+    {
+      "id": "reg-29",
+      "number": 29,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Notices and appeals",
+      "keywords": ["notices", "warning notice", "decision notice", "section 134", "representations", "urgent action", "appeal", "regulation 32"],
+      "text": "29.(1) The Authority or the Commissioner must give the person concerned a warning notice if it proposes–\n(a) to refuse an application for a prediction market authorisation;\n(b) to impose or vary a condition on a prediction market authorisation;\n(c) to give a direction under regulation 5(4) or 26;\n(d) to suspend or revoke a prediction market authorisation; or\n(e) to take any enforcement action.\n\n(2) The Authority or the Commissioner must give the person concerned a decision notice if, after giving a warning notice and considering any representations made in accordance with section 134 of the Act, it decides to take any of the steps in sub-regulation (1)(a) to (e).\n\n(3) The requirement to give a warning notice under sub-regulation (1) or a decision notice under sub-regulation (2) does not apply in any case where–\n(a) the person concerned has requested or consented to the steps being taken; or\n(b) the Authority or the Commissioner is satisfied that urgent action is necessary.\n\n(4) Where urgent action is taken without prior notice, the Authority or the Commissioner must give the person concerned written notice of that action as soon as reasonably practicable.\n\n(5) A person aggrieved by a decision under these Regulations may appeal in accordance with regulation 32."
+    },
+    {
+      "id": "reg-30",
+      "number": 30,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Publication",
+      "keywords": ["publication", "grant variation suspension revocation", "enforcement action", "public interest", "confidentiality", "proportionate"],
+      "text": "30.(1) The Authority may publish such information as it considers appropriate concerning–\n(a) the grant, variation, suspension or revocation of a prediction market authorisation; or\n(b) any other regulatory or enforcement action taken under these Regulations.\n\n(2) In determining whether to publish any information, the Authority must act fairly and proportionately in the public interest, having regard to confidentiality, market integrity, the protection of participants and the reputation of Gibraltar."
+    },
+    {
+      "id": "reg-31",
+      "number": 31,
+      "part": 5,
+      "partTitle": "SUPERVISION AND ENFORCEMENT",
+      "title": "Fees, taxes and duties",
+      "keywords": ["fees", "taxes", "duties", "section 155", "section 175", "Schedule 3"],
+      "text": "31.(1) An applicant or authorised operator must pay any applicable fees which are prescribed under section 155 of the Act.\n\n(2) An authorised operator must pay any applicable taxes or duties which are prescribed under section 175 of the Act, as modified by Schedule 3."
+    },
+    {
+      "id": "reg-32",
+      "number": 32,
+      "part": 6,
+      "partTitle": "APPEALS",
+      "title": "Appeals",
+      "keywords": ["appeals", "Supreme Court", "28 days", "decision notice", "dismiss allow quash remit", "costs", "stay", "no right of appeal"],
+      "text": "32.(1) A person aggrieved by a decision notice other than one to which sub-regulation 7 applies may appeal to the Supreme Court.\n\n(2) An appeal must be made within 28 days of the date on which the decision notice is served on the recipient by the Authority or the Commissioner.\n\n(3) The court may allow an appeal to be made outside the time set out in sub-regulation (2) in exceptional circumstances, if the court considers that it would be unjust not to do so.\n\n(4) The court may–\n(a) dismiss the appeal;\n(b) allow the appeal and quash the decision appealed against; or\n(c) remit the matter to the Authority or the Commissioner (as the case may be) for further consideration, in accordance with any directions of the court.\n\n(5) The court may make any order as to the costs of an appeal as it considers appropriate.\n\n(6) An appeal does not have the effect of staying a decision notice which under the provisions of these Regulations or the Act takes effect immediately, but the court may in its discretion grant a stay or other relief in respect of such a notice until the appeal has been determined.\n\n(7) There is no right of appeal against a decision notice–\n(a) refusing an application for the grant of a prediction market authorisation under regulation 8(1); or\n(b) imposing any condition or restriction on a prediction market authorisation at the time it is granted."
+    },
+    {
+      "id": "reg-33",
+      "number": 33,
+      "part": 7,
+      "partTitle": "FINAL PROVISIONS",
+      "title": "Application of other enactments",
+      "keywords": ["application of other enactments", "no separate licence", "Financial Services Act 2019", "Part 7 permission", "financial instruments", "paragraph 46 Schedule 2", "GFSC consultation"],
+      "text": "33.(1) An authorised operator is not required to obtain a separate licence or authorisation under any other enactment in respect of prediction market activity, to the extent that–\n(a) the activity falls within the scope of its prediction market authorisation; and\n(b) the other enactment would otherwise require such a licence or authorisation solely by reason of the characteristics of that activity as prediction market activity.\n\n(2) A person who has permission under Part 7 of the Financial Services Act 2019 (the \"2019 Act\") is not required to obtain a prediction market authorisation under these Regulations in order to carry on prediction market activity, to the extent that–\n(a) the prediction market contracts offered or facilitated by that person constitute financial instruments within the meaning of paragraph 46 of Schedule 2 to the 2019 Act;\n(b) the prediction market activity is expressly within the scope of the regulated activities which the person has permission under Part 7 of the 2019 Act to carry on; and\n(c) the person complies with–\n(i) the requirements of the 2019 Act and any other enactment which applies to that permission;\n(ii) any requirements, conditions or obligations attaching to its Part 7 permission; and\n(iii) any requirements of these Regulations which apply to that person by virtue of a direction under sub-regulation (3).\n\n(3) The Authority may direct that such requirements of these Regulations as it considers necessary are to apply to a person or class or persons to whom sub-regulation (2) applies, subject to such modifications, if any, as may be specified in the direction.\n\n(4) The Authority must consult the Gibraltar Financial Services Commission before giving a direction under sub-regulation (3)."
+    },
+    {
+      "id": "reg-34",
+      "number": 34,
+      "part": 7,
+      "partTitle": "FINAL PROVISIONS",
+      "title": "Consequential amendment",
+      "keywords": ["consequential amendment", "Proceeds of Crime Act 2015", "section 9(1)", "paragraph (s)"],
+      "text": "34. In section 9(1) of the Proceeds of Crime Act 2015, after paragraph (r) insert–\n\"(s) prediction market activity within the meaning of the Prediction Market Regulations 2026, carried on by an operator authorised in accordance with those Regulations.\"."
+    }
+  ],
+  "schedules": [
+    {
+      "id": "schedule-1",
+      "number": 1,
+      "title": "MATTERS TO BE INCLUDED IN AN APPLICATION",
+      "relatedRegulation": 7,
+      "keywords": ["application", "matters", "business plan", "systems", "contract rules", "surveillance", "onboarding", "safeguarding", "AML", "outsourcing", "wind-down"],
+      "items": [
+        "The name, legal form, registered office and principal place of business of the applicant.",
+        "Details of the applicant's ownership, controllers, directors, senior managers and key function holders.",
+        "A business plan describing the proposed prediction market activity.",
+        "Details of the systems, technology and operational arrangements to be used.",
+        "The proposed contract rules and settlement arrangements.",
+        "Details of market surveillance, manipulation prevention and disorderly trading controls.",
+        "Details of participant onboarding, eligibility, disclosure and complaints arrangements.",
+        "Details of client money, safeguarding, reconciliation and settlement arrangements.",
+        "Details of money laundering, terrorist financing, proliferation financing and sanctions controls.",
+        "Details of outsourcing and material third-party arrangements.",
+        "A recovery and wind-down plan."
+      ],
+      "text": "SCHEDULE 1 (Regulation 7) — MATTERS TO BE INCLUDED IN AN APPLICATION\n\n1. The name, legal form, registered office and principal place of business of the applicant.\n2. Details of the applicant's ownership, controllers, directors, senior managers and key function holders.\n3. A business plan describing the proposed prediction market activity.\n4. Details of the systems, technology and operational arrangements to be used.\n5. The proposed contract rules and settlement arrangements.\n6. Details of market surveillance, manipulation prevention and disorderly trading controls.\n7. Details of participant onboarding, eligibility, disclosure and complaints arrangements.\n8. Details of client money, safeguarding, reconciliation and settlement arrangements.\n9. Details of money laundering, terrorist financing, proliferation financing and sanctions controls.\n10. Details of outsourcing and material third-party arrangements.\n11. A recovery and wind-down plan."
+    },
+    {
+      "id": "schedule-2",
+      "number": 2,
+      "title": "CORE AUTHORISATION CONDITIONS",
+      "relatedRegulation": 8,
+      "keywords": ["core conditions", "fit and proper", "financial resources", "governance", "effective supervision", "substantive presence", "safeguarding", "market integrity", "AML", "contract rules", "compliance"],
+      "items": [
+        "The applicant must be fit and proper.",
+        "The applicant must have adequate financial and non-financial resources.",
+        "The applicant must have effective governance arrangements and internal controls.",
+        "The applicant must be capable of effective supervision by the Authority and the Commissioner.",
+        "The applicant must maintain sufficient substantive presence in Gibraltar.",
+        "The applicant must have adequate systems to protect participants and safeguard participant money and assets.",
+        "The applicant must have effective arrangements to protect market integrity and prevent manipulation or abusive trading.",
+        "The applicant must have effective money laundering, terrorist financing, proliferation financing and sanctions controls.",
+        "The applicant must have contract rules and settlement arrangements which are clear, objective and capable of effective supervision.",
+        "The applicant must be able to comply with the Act, these Regulations and any condition of authorisation."
+      ],
+      "text": "SCHEDULE 2 (Regulation 8) — CORE AUTHORISATION CONDITIONS\n\n1. The applicant must be fit and proper.\n2. The applicant must have adequate financial and non-financial resources.\n3. The applicant must have effective governance arrangements and internal controls.\n4. The applicant must be capable of effective supervision by the Authority and the Commissioner.\n5. The applicant must maintain sufficient substantive presence in Gibraltar.\n6. The applicant must have adequate systems to protect participants and safeguard participant money and assets.\n7. The applicant must have effective arrangements to protect market integrity and prevent manipulation or abusive trading.\n8. The applicant must have effective money laundering, terrorist financing, proliferation financing and sanctions controls.\n9. The applicant must have contract rules and settlement arrangements which are clear, objective and capable of effective supervision.\n10. The applicant must be able to comply with the Act, these Regulations and any condition of authorisation."
+    },
+    {
+      "id": "schedule-3",
+      "number": 3,
+      "title": "MODIFIED APPLICATION OF THE ACT",
+      "relatedRegulation": 28,
+      "keywords": ["modified application", "section 13", "Part 7", "Part 8", "Part 10", "section 175", "rules codes of practice", "information gathering", "common sanctioning powers", "notice procedure", "gaming taxes and duties"],
+      "text": "SCHEDULE 3 (Regulation 28) — MODIFIED APPLICATION OF THE ACT\n\nModified application of section 13.\n1. Section 13 of the Act (rules, codes of practice and guidance) applies as if–\n(a) in subsection (2)(a), the reference to \"this Act\" were a reference to \"these Regulations\";\n(b) in subsection (3), the reference to \"licence holders\" were a reference to \"authorised operators\";\n(c) in subsection (8), the reference to \"Licence holders\" were a reference to \"Authorised operators\";\n(d) in subsection (10)–\n(i) in paragraph (a)(i) and (ii), references to \"gambling equipment\" were references to \"prediction market equipment\";\n(ii) in paragraph (b), the reference to \"gambling\" were a reference to \"prediction market activity\";\n(iii) in paragraph (e), the reference to \"licence holders\" were a reference to \"authorised operators\";\n(iv) in paragraph (g), the reference to \"gambling\" were a reference to \"prediction market activity\";\n(e) in subsection (11). the reference to \"a licence holder by way of a licence\" were a reference to \"an authorised operator by way on an authorisation\".\n\nModified application of Part 7.\n2. Part 7 of the Act (information gathering and investigatory powers) applies as if–\n(a) references to \"licence holder\" were references to \"authorised operator\";\n(b) in section 101(5)(b), references to \"gambling\" were references to \"prediction market\";\n(c) in section 101(5)(d)–\n(i) the first reference to \"gambling\" were a reference to \"prediction market\"; and\n(ii) \"the bets, gaming or any other form of gambling\" were a reference to \"any prediction market activity\";\n(d) in section 104(2)(a) and (b), references to \"regulated activity\" were references to \"prediction market activity\";\n(e) in section 112(1), the reference to \"section 142\" were a reference to \"regulation 32\".\n\nModified application of Part 8.\n3. Part 8 of the Act (common sanctioning powers) applies as if–\n(a) references to \"licence holder\" were references to \"authorised operator\";\n(b) for section 114(2), there were substituted–\n\"(2) Whether an authorised operator has complied with requirements imposed by or under this Act may also be relevant in determining whether–\n(a) the authorised operator continues to satisfy the conditions for holding a prediction market authorisation; or\n(b) to vary or revoke the authorised operator's prediction market authorisation.\";\n(c) in section 122–\n(i) references to \"suspension of licence order\" were references to \"authorisation suspension order\"\n(ii) in subsection (2)(a), the reference to \"the licence to carry on a regulated activity\" were a reference to \"the authorisation to carry on prediction market activity\";\n(iii) in subsection (2)(b), the reference to \"regulated activity\" were a reference to \"prediction market activity\";\n(iv) in subsection (7), the reference to \"regulated activities\" were a reference to \"prediction market activities\";\n(d) in section 123–\n(i) in subsection (2), the reference to \"regulated functions, within the meaning of Part 5, in a licence holder\" were a reference to \"specified functions in an authorised operator\";\n(ii) for subsection (4), there were substituted–\n\"(4) The prohibition order must specify the functions to which it applies.\";\n(e) in section 126(2), the reference to \"section 142\" were a reference to \"regulation 32\";\n(f) in section 127(10), the reference to \"section 142\" were a reference to \"regulation 32\".\n\nModified application of Part 10.\n4. Part 10 of the Act (notice procedure and publication) applies as if–\n(a) in section 135(3)(d), the reference to \"section 142\" were a reference to \"regulation 32\";\n(b) in section 135(5)(b), the reference to \"section 142(2)\" were a reference to \"regulation 32(2)\";\n(c) in section 138(1)(b) the reference to \"gambling markets\" were a reference to \"prediction markets\";\n(d) in section 138(3), the reference to \"section 142(2)\" were a reference to \"regulation 32(2)\".\n\nModified application of section 175.\n5. Section 175 of the Act (gaming taxes and duties) applies as if–\n(a) in subsection (1), the reference to \"licence holder\" were a reference to \"authorised operator\";\n(b) in subsection (2)–\n(i) the reference to \"licence holders\" were a reference to \"authorised operators\";\n(ii) for \"activities authorised by the licence\" there were substituted \"prediction market activities\";\n(iii) the reference to \"licences\" were a reference to \"activities\"."
+    }
+  ]
+}
