@@ -1,0 +1,27 @@
+{
+  "comment": "Golden search-regression fixture. Every search bug report gets a row BEFORE its fix is coded. Fields: query; mustBeTop1 (exact id); mustIncludeTop3 (ids that must all appear in the top 3); mustExcludeTop1 (id that must NOT rank first); snippetMatch (regex the named doc's snippet must match, format 'id:regex'); source (why the row exists).",
+  "rows": [
+    { "query": "safeguarding client money", "mustBeTop1": "reg-19", "source": "no-regression (pre-1.0.3 behaviour)" },
+    { "query": "wind-down", "mustIncludeTop3": ["reg-20"], "source": "hyphen tokenization + phrase handling" },
+    { "query": "appeals Supreme Court", "mustBeTop1": "reg-32", "source": "no-regression" },
+    { "query": "conflicts of interest", "mustBeTop1": "reg-17", "source": "phrase bonus must survive stopword stripping" },
+    { "query": "stablecoin", "mustIncludeTop3": ["reg-22"], "source": "user report 2026-07-14: singular returned 0 hits" },
+    { "query": "manipulate", "mustIncludeTop3": ["reg-15", "reg-12"], "snippetMatch": "reg-15:manipulat", "source": "user report 2026-07-14: verb form returned 0 hits" },
+    { "query": "appeal", "mustIncludeTop3": ["reg-32", "reg-29"], "source": "user report 2026-07-14" },
+    { "query": "can an operator trade against its own customers", "mustIncludeTop3": ["reg-17"], "source": "flagship: stopwords + synonyms + coverage (was rank 9)" },
+    { "query": "market manipulation insider dealing", "mustBeTop1": "reg-15", "source": "statutory vocabulary direct" },
+    { "query": "fit and proper", "mustIncludeTop3": ["reg-8", "schedule-2"], "source": "stopword inside statutory phrase" },
+    { "query": "anti-money laundering sanctions", "mustBeTop1": "reg-21", "source": "hyphenated statutory phrase" },
+    { "query": "revoke authorisation", "mustIncludeTop3": ["reg-27"], "source": "-tion folding blast radius" },
+    { "query": "prohibited contracts terrorism", "mustBeTop1": "reg-14", "source": "prohibited classes" },
+    { "query": "register of authorised operators", "mustBeTop1": "reg-10", "source": "exact title phrase" },
+    { "query": "is a prediction market betting", "mustIncludeTop3": ["reg-4"], "source": "corrected betting row targets reg-4, not trading" },
+    { "query": "gambling licence", "mustIncludeTop3": ["reg-6"], "source": "lay licence vocabulary; reg-4 guarded by the 'is a prediction market betting' row (schedule-3/reg-3 legitimately outrank it here — both are licence/gambling-dense)" },
+    { "query": "do I need a gambling licence", "mustIncludeTop3": ["reg-6"], "source": "not-a-licence substantive point" },
+    { "query": "how much does it cost", "mustIncludeTop3": ["reg-31"], "mustExcludeTop1": "reg-32", "source": "'cost' must not misdirect to appeal costs (reg-32)" },
+    { "query": "how long does an application take", "mustIncludeTop3": ["reg-7"], "source": "applicant-journey vocabulary" },
+    { "query": "sanctions", "mustBeTop1": "reg-21", "source": "sanctions = AML/financial sanctions sense, not enforcement" },
+    { "query": "customer protection", "mustIncludeTop3": ["reg-18"], "snippetMatch": "reg-18:participant", "source": "synonym-only match must show statutory surface form" },
+    { "query": "cooling-off period", "mustIncludeTop3": ["reg-18"], "source": "hyphenated phrase bonus" }
+  ]
+}

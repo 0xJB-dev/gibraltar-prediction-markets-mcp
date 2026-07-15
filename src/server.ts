@@ -73,7 +73,9 @@ export function buildServer(): McpServer {
       const results = hits.map((h) => ({
         id: h.id,
         title: h.title,
-        url: `mcp://gibraltar-prediction-markets/${h.id}`,
+        // Deep link into the official PDF (page-anchored) so citations are
+        // clickable and unique per provision. MCP resource URIs are separate.
+        url: h.url,
         citation: h.citation,
         snippet: h.snippet,
       }));
@@ -104,7 +106,7 @@ export function buildServer(): McpServer {
         id: doc.id,
         title: doc.title,
         text: doc.text,
-        url: `mcp://gibraltar-prediction-markets/${doc.id}`,
+        url: doc.officialUrl,
         metadata: {
           citation: `${CITE} — ${doc.citation}`,
           kind: doc.kind,

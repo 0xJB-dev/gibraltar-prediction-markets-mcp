@@ -1,14 +1,22 @@
 /**
  * Data-access layer for the Prediction Market Regulations 2026 (LN.2026/176).
  *
- * Loads the authoritative structured JSON once, then exposes typed lookup and
- * keyword-search helpers. Every regulation, schedule and the definitions block
- * is normalised into a single flat `Document` list so that (a) the MCP tools and
- * (b) ChatGPT's required search/fetch contract can share one index. Search is a
- * dependency-free scored keyword match — deterministic, offline, and good enough
- * for a corpus of ~40 short legal documents.
+ * Every regulation, schedule and the definitions block is normalised into a
+ * single flat `Document` list so the MCP tools and ChatGPT's search/fetch
+ * contract share one index.
+ *
+ * Search design (v1.0.3): conservative stemming on both index and query,
+ * stopword stripping, curated lay→statutory synonym expansion at reduced
+ * weight, a distinct-term coverage multiplier, and a phrase bonus evaluated on
+ * normalized text (hyphens folded) against the ORIGINAL query token sequence.
+ * Exact matches always outrank stem matches, which outrank synonym expansions
+ * (integer weights 10 : 8 : 6 per body occurrence; 40/25 : 32/20 : 24/15 for
+ * title/keyword fields). Scoring is per-term-per-field at most once — never
+ * both the exact and stem path for the same term.
  */
 import { raw } from "./regulations.gen.js";
+import { tokenize, stem, contentTerms, STOPWORDS, DAMPED_STEMS } from "./text.js";
+import { WORD_SYNONYMS, PHRASE_SYNONYMS } from "./synonyms.js";
 
 export interface Definition {
   term: string;
@@ -23,6 +31,7 @@ export interface Regulation {
   title: string;
   keywords: string[];
   text: string;
+  page?: number;
 }
 
 export interface Schedule {
@@ -33,6 +42,7 @@ export interface Schedule {
   keywords: string[];
   items?: string[];
   text: string;
+  page?: number;
 }
 
 export interface Part {
@@ -58,11 +68,26 @@ export interface Document {
   keywords: string[];
   /** Human citation, e.g. "Regulation 12" or "Schedule 2". */
   citation: string;
+  /** Page in the official PDF where the provision starts. */
+  page?: number;
+  /** Deep link into the official PDF (unique per document — clients dedupe URLs). */
+  officialUrl: string;
 }
 
 // Data is embedded at build time (see scripts/gen-data.mjs) so there is no
 // runtime filesystem access — works identically for stdio and serverless.
 export const data: RegulationsData = raw as RegulationsData;
+
+const OFFICIAL_PDF = String(data.meta.officialTextUrl ?? "https://www.gibraltarlaws.gov.gi");
+
+function officialUrlFor(id: string, page?: number): string {
+  // #page=N jumps PDF viewers to the provision; the extra &provision= parameter
+  // is ignored by viewers (PDF Open Parameters) but keeps every document's URL
+  // unique — citation-rendering clients dedupe identical URLs.
+  return page
+    ? `${OFFICIAL_PDF}#page=${page}&provision=${id}`
+    : `${OFFICIAL_PDF}#${id}`;
+}
 
 /** Build the flat document index used by search() and fetchDocument(). */
 function buildDocuments(): Document[] {
@@ -76,6 +101,8 @@ function buildDocuments(): Document[] {
       text: reg.text,
       keywords: reg.keywords,
       citation: `Regulation ${reg.number}`,
+      page: reg.page,
+      officialUrl: officialUrlFor(reg.id, reg.page),
     });
   }
 
@@ -87,13 +114,15 @@ function buildDocuments(): Document[] {
       text: sch.text,
       keywords: sch.keywords,
       citation: `Schedule ${sch.number}`,
+      page: sch.page,
+      officialUrl: officialUrlFor(sch.id, sch.page),
     });
   }
 
-  // Definitions as one browsable document.
   const defsText = data.definitions
     .map((d) => `"${d.term}" ${d.definition}`)
     .join("\n\n");
+  const defsPage = Number(data.meta.definitionsPage) || undefined;
   docs.push({
     id: "definitions",
     kind: "definitions",
@@ -101,6 +130,8 @@ function buildDocuments(): Document[] {
     text: defsText,
     keywords: ["definitions", "interpretation", "defined terms", "meaning"],
     citation: "Regulation 3 (Interpretation)",
+    page: defsPage,
+    officialUrl: officialUrlFor("definitions", defsPage),
   });
 
   return docs;
@@ -111,14 +142,79 @@ export const documents: Document[] = buildDocuments();
 const CITATION_PREFIX =
   "Prediction Market Regulations 2026 (LN.2026/176), Gibraltar";
 
-/** Tokenise to lowercase alphanumeric words for scoring. */
-function tokenize(s: string): string[] {
-  return s
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, " ")
-    .split(/\s+/)
-    .filter((w) => w.length > 1);
+// ---------------------------------------------------------------------------
+// Search index — built once at module load (~1ms for this corpus).
+// ---------------------------------------------------------------------------
+
+interface DocIndex {
+  doc: Document;
+  titleExact: Set<string>;
+  titleStems: Set<string>;
+  kwExact: Set<string>;
+  kwStems: Set<string>;
+  bodyExact: Map<string, number>;
+  bodyStems: Map<string, number>;
+  /** First surface form seen in the body for each stem — for snippets. */
+  stemSurface: Map<string, string>;
+  /** Tokenized text joined by single spaces (hyphens folded) with guard spaces. */
+  normAll: string;
 }
+
+function buildIndex(): DocIndex[] {
+  return documents.map((doc) => {
+    const titleTokens = tokenize(doc.title);
+    const kwTokens = tokenize(doc.keywords.join(" "));
+    const bodyTokens = tokenize(doc.text);
+
+    const bodyExact = new Map<string, number>();
+    const bodyStems = new Map<string, number>();
+    const stemSurface = new Map<string, string>();
+    for (const t of bodyTokens) {
+      bodyExact.set(t, (bodyExact.get(t) ?? 0) + 1);
+      const s = stem(t);
+      bodyStems.set(s, (bodyStems.get(s) ?? 0) + 1);
+      if (!stemSurface.has(s)) stemSurface.set(s, t);
+    }
+
+    // One normalized haystack for phrase checks across title, keywords and body.
+    const normAll = ` ${titleTokens.join(" ")} ${kwTokens.join(" ")} ${bodyTokens.join(" ")} `;
+
+    return {
+      doc,
+      titleExact: new Set(titleTokens),
+      titleStems: new Set(titleTokens.map(stem)),
+      kwExact: new Set(kwTokens),
+      kwStems: new Set(kwTokens.map(stem)),
+      bodyExact,
+      bodyStems,
+      stemSurface,
+      normAll,
+    };
+  });
+}
+
+const index: DocIndex[] = buildIndex();
+
+/** Synonym keys are lay words; index them by stem so plural queries hit too. */
+const STEMMED_WORD_SYNONYMS = new Map<string, string[]>();
+for (const [k, v] of Object.entries(WORD_SYNONYMS)) {
+  const s = stem(k);
+  const existing = STEMMED_WORD_SYNONYMS.get(s) ?? [];
+  STEMMED_WORD_SYNONYMS.set(s, [...new Set([...existing, ...v])]);
+}
+
+// Integer weights: exact : stem : synonym = 10 : 8 : 6 (per body occurrence,
+// capped at 5 occurrences); title 40/32/24; keywords 25/20/15.
+const W = {
+  titleExact: 40, titleStem: 32, titleSyn: 24,
+  kwExact: 25, kwStem: 20, kwSyn: 15,
+  bodyExact: 10, bodyStem: 8, bodySyn: 6,
+  bodyCap: 5,
+  phraseBonus: 30,
+  synPhraseTitle: 24, synPhraseKw: 15, synPhraseBody: 10,
+  coverage: 0.75,
+  synCoverage: 0.6,
+};
 
 export interface SearchHit {
   id: string;
@@ -126,60 +222,177 @@ export interface SearchHit {
   citation: string;
   score: number;
   snippet: string;
+  url: string;
+}
+
+interface Expansion {
+  text: string;          // single word or phrase
+  isPhrase: boolean;
+  forTerm: number;       // index of the content term this expansion belongs to
 }
 
 /**
- * Score each document against the query terms. Title and keyword matches are
- * weighted above body matches so that "safeguarding" surfaces reg 19 ahead of
- * incidental mentions elsewhere. Returns hits sorted by descending score.
+ * Collect synonym expansions for the query: word-level (matched by surface or
+ * stem of each content term) and phrase-level (lay phrase inside the query's
+ * token sequence, attributed to its first content term for coverage).
  */
-export function search(query: string, limit = 10): SearchHit[] {
-  const terms = tokenize(query);
-  if (terms.length === 0) return [];
+function collectExpansions(
+  rawTokens: string[],
+  terms: { original: string; stemmed: string }[]
+): Expansion[] {
+  const out: Expansion[] = [];
+  const seen = new Set<string>();
 
-  const hits: SearchHit[] = [];
-  for (const doc of documents) {
-    // Score on tokenized word boundaries, not raw substrings, so a short query
-    // token like "act" does not score inside "contract"/"transaction" or "reg"
-    // inside "register". Body occurrences are counted per exact token.
-    const titleTokens = new Set(tokenize(doc.title));
-    const keywordTokens = new Set(tokenize(doc.keywords.join(" ")));
-    const bodyCounts = new Map<string, number>();
-    for (const t of tokenize(doc.text)) bodyCounts.set(t, (bodyCounts.get(t) ?? 0) + 1);
-    const bodyLower = doc.text.toLowerCase();
-
-    let score = 0;
-    for (const term of terms) {
-      if (titleTokens.has(term)) score += 8;
-      if (keywordTokens.has(term)) score += 5;
-      const bodyMatches = bodyCounts.get(term) ?? 0;
-      score += Math.min(bodyMatches, 5) * 2;
+  terms.forEach((t, i) => {
+    const expansions = WORD_SYNONYMS[t.original] ?? STEMMED_WORD_SYNONYMS.get(t.stemmed) ?? [];
+    for (const e of expansions) {
+      if (seen.has(e)) continue;
+      seen.add(e);
+      out.push({ text: e, isPhrase: e.includes(" "), forTerm: i });
     }
-    // Bonus for phrase presence.
-    if (terms.length > 1 && bodyLower.includes(terms.join(" "))) score += 6;
+  });
 
-    if (score > 0) {
-      hits.push({
-        id: doc.id,
-        title: doc.title,
-        citation: `${CITATION_PREFIX} — ${doc.citation}`,
-        score,
-        snippet: buildSnippet(doc.text, terms),
-      });
+  const querySeq = ` ${rawTokens.join(" ")} `;
+  for (const { phrase, expand } of PHRASE_SYNONYMS) {
+    if (!querySeq.includes(` ${phrase} `)) continue;
+    const phraseTokens = phrase.split(" ");
+    let forTerm = terms.findIndex((t) => phraseTokens.includes(t.original));
+    if (forTerm === -1) forTerm = 0;
+    for (const e of expand) {
+      if (seen.has(e)) continue;
+      seen.add(e);
+      out.push({ text: e, isPhrase: e.includes(" "), forTerm });
     }
   }
 
-  hits.sort((a, b) => b.score - a.score);
+  return out;
+}
+
+/**
+ * Score each document. Per content term, each field (title/keywords/body)
+ * contributes at most once: exact wins over stem, damped stems halve body
+ * contributions. Synonym expansions score at 0.6× and count 0.6 toward
+ * coverage when their term is otherwise unmatched. Final score is multiplied
+ * by the coverage factor 1 + 0.75·(m−1)/max(1, n−1).
+ */
+export function search(query: string, limit = 10): SearchHit[] {
+  const rawTokens = tokenize(query);
+  const terms = dedupeByStem(contentTerms(query));
+  if (terms.length === 0 && rawTokens.length === 0) return [];
+
+  const expansions = collectExpansions(rawTokens, terms);
+  const hits: SearchHit[] = [];
+
+  for (const d of index) {
+    let base = 0;
+    const matchedTerms = new Array<number>(terms.length).fill(0); // 0 | 0.6 | 1
+    const surfaces: string[] = [];
+
+    terms.forEach((t, i) => {
+      let termScore = 0;
+
+      if (d.titleExact.has(t.original)) termScore += W.titleExact;
+      else if (d.titleStems.has(t.stemmed)) termScore += W.titleStem;
+
+      if (d.kwExact.has(t.original)) termScore += W.kwExact;
+      else if (d.kwStems.has(t.stemmed)) termScore += W.kwStem;
+
+      const damp = DAMPED_STEMS.has(t.stemmed) ? 0.5 : 1;
+      const exactCount = d.bodyExact.get(t.original) ?? 0;
+      const stemCount = d.bodyStems.get(t.stemmed) ?? 0;
+      if (exactCount > 0) {
+        termScore += Math.min(exactCount, W.bodyCap) * W.bodyExact * damp;
+        surfaces.push(t.original);
+      } else if (stemCount > 0) {
+        termScore += Math.min(stemCount, W.bodyCap) * W.bodyStem * damp;
+        const surf = d.stemSurface.get(t.stemmed);
+        if (surf) surfaces.push(surf);
+      } else if (termScore > 0) {
+        surfaces.push(t.original);
+      }
+
+      if (termScore > 0) {
+        base += termScore;
+        matchedTerms[i] = 1;
+      }
+    });
+
+    for (const e of expansions) {
+      let expScore = 0;
+      if (e.isPhrase) {
+        const needle = ` ${e.text} `;
+        if (d.normAll.includes(needle)) {
+          // Attribute at the strongest tier the phrase appears in.
+          const inTitle = ` ${tokenize(d.doc.title).join(" ")} `.includes(needle);
+          expScore = inTitle ? W.synPhraseTitle : W.synPhraseKw;
+          surfaces.push(e.text);
+        }
+      } else {
+        const es = stem(e.text);
+        if (d.titleExact.has(e.text)) expScore += W.titleSyn;
+        else if (d.titleStems.has(es)) expScore += W.titleSyn * 0.8;
+        if (d.kwExact.has(e.text)) expScore += W.kwSyn;
+        else if (d.kwStems.has(es)) expScore += W.kwSyn * 0.8;
+        const c = d.bodyExact.get(e.text) ?? d.bodyStems.get(es) ?? 0;
+        if (c > 0) {
+          expScore += Math.min(c, W.bodyCap) * W.bodySyn;
+          surfaces.push(d.stemSurface.get(es) ?? e.text);
+        }
+      }
+      if (expScore > 0) {
+        base += expScore;
+        if (matchedTerms[e.forTerm] === 0) matchedTerms[e.forTerm] = W.synCoverage;
+      }
+    }
+
+    // Phrase bonus: the ORIGINAL query token sequence appearing verbatim in the
+    // normalized text (hyphens folded) — never the stemmed/stripped terms.
+    if (rawTokens.length >= 2 && d.normAll.includes(` ${rawTokens.join(" ")} `)) {
+      base += W.phraseBonus;
+    }
+
+    if (base <= 0) continue;
+
+    const n = terms.length;
+    const m = matchedTerms.reduce((a, b) => a + b, 0);
+    const coverage = n > 1 ? 1 + W.coverage * ((m - 1) / (n - 1)) : 1;
+    const score = base * coverage;
+
+    hits.push({
+      id: d.doc.id,
+      title: d.doc.title,
+      citation: `${CITATION_PREFIX} — ${d.doc.citation}`,
+      score,
+      snippet: buildSnippet(d.doc.text, surfaces),
+      url: d.doc.officialUrl,
+    });
+  }
+
+  hits.sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
   return hits.slice(0, limit);
 }
 
-/** Return a short excerpt centred on the first matching term. */
-function buildSnippet(text: string, terms: string[]): string {
-  const lower = text.toLowerCase();
+/** Keep the first term for each distinct stem (avoids double-scoring "trade trading"). */
+function dedupeByStem(terms: { original: string; stemmed: string }[]): { original: string; stemmed: string }[] {
+  const seen = new Set<string>();
+  return terms.filter((t) => (seen.has(t.stemmed) ? false : (seen.add(t.stemmed), true)));
+}
+
+/**
+ * Excerpt centred on the earliest matched surface form, located at a word
+ * boundary in the original text (hyphen-tolerant for phrases). Falls back to
+ * the document start only when no surface form is found.
+ */
+function buildSnippet(text: string, surfaces: string[]): string {
   let idx = -1;
-  for (const term of terms) {
-    const found = lower.indexOf(term);
-    if (found !== -1 && (idx === -1 || found < idx)) idx = found;
+  for (const s of surfaces) {
+    const pattern = s
+      .split(" ")
+      .map((w) => escapeRegExp(w))
+      .join("[\\s-]+");
+    const re = new RegExp(`\\b${pattern}`, "i");
+    const m = re.exec(text);
+    if (m && (idx === -1 || m.index < idx)) idx = m.index;
   }
   if (idx === -1) idx = 0;
   const start = Math.max(0, idx - 80);
@@ -188,6 +401,10 @@ function buildSnippet(text: string, terms: string[]): string {
   if (start > 0) snippet = "…" + snippet;
   if (end < text.length) snippet = snippet + "…";
   return snippet;
+}
+
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 export function fetchDocument(id: string): Document | undefined {
@@ -229,3 +446,6 @@ export function listRegulations(): Array<{ number: number; title: string; part: 
 export function fullCitation(): string {
   return CITATION_PREFIX;
 }
+
+// Re-exported for tests (tokenizer/stemmer parity checks).
+export { tokenize, stem, STOPWORDS };
