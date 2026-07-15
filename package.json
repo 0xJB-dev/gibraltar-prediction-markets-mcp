@@ -1,6 +1,6 @@
 {
   "name": "gibraltar-prediction-markets-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MCP server exposing the Gibraltar Prediction Market Regulations 2026 (LN.2026/176) for legal research in Claude Desktop, Claude Code, ChatGPT, Cursor and any MCP client.",
   "license": "MIT",
   "author": "0xJB (https://0xjb.dev)",
